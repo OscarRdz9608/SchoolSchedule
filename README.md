@@ -1,3 +1,5 @@
-https://darkstark96-schoolsched-rr3hhgjtys4.ws-us65.gitpod.io
 
-# SchoolSchedule
+
+## SchoolSchedule
+#Proyecto gestor de horarios
+#https://darkstark96-schoolsched-26gh9yttses.ws-us70.gitpod.io
