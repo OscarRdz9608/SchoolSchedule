@@ -1,0 +1,100 @@
+DROP DATABASE SchoolSchedule;
+CREATE DATABASE SchoolSchedule;
+USE SchoolSchedule;
+
+CREATE TABLE TBLUSUARIO(
+pkUsuario int not null auto_increment,
+NombreUsuario varchar(15),
+ApellidoPaUsuario varchar(15),
+ApellidoMaUsuario varchar(15),
+Correo varchar(30),
+Contrasenia blob,
+fkRol int,
+primary key(pkUsuario)
+);
+
+
+CREATE TABLE TBLROL(
+pkRol int not null auto_increment,
+Rol varchar(15),
+primary key(pkRol)
+);
+alter table TBLUSUARIO add foreign key (fkRol) references TBLROL(pkRol);
+
+CREATE TABLE TBLGRUPO(
+pkGrupo int not null auto_increment,
+Grupo varchar(15),
+primary key(pkGrupo)
+);
+
+CREATE TABLE TBLCARRERA(
+pkCarrera int not null auto_increment,
+Carrera varchar(15),
+primary key(pkCarrera)
+);
+
+CREATE TABLE TBLTURNO(
+pkTurno int not null auto_increment,
+Turno varchar(15),
+primary key(pkTurno)
+);
+
+CREATE TABLE TBLCUATRIMESTRE(
+pkCuatrimestre int not null auto_increment,
+Cuatrimestre varchar(15),
+primary key(pkCuatrimestre)
+);
+
+CREATE TABLE TBLMATERIA(
+pkMateria int not null auto_increment,
+Materia varchar(15),
+primary key(pkMateria)
+);
+
+CREATE TABLE TBLPLANESTUDIOS(
+pkPlanEstudio int not null auto_increment,
+PlanEstudio varchar(15),
+fkCuatrimestre int,
+fkCarrera int,
+fkMateria int,
+TotalHoras int,
+TotalHorasSemana int,
+primary key(pkPlanEstudio)
+);
+
+CREATE TABLE TBLCICLOESCOLAR(
+pkCicloEscolar int not null auto_increment,
+CicloEscolar varchar(15),
+Periodo enum ("1","2","3"), 
+Anio int,
+RegistroGrupoInicio date,
+RegistroGrupoTermino date,
+RegistroDisponibilidad date,
+
+
+
+
+
+primary key(pkPlanEstudio)
+);
+
+
+
+
+
+
+
+
+
+
+
+alter table TBLPLANESTUDIOS add foreign key (fkCuatrimestre) references TBLCUATRIMESTRE(pkCuatrimestre);
+alter table TBLPLANESTUDIOS add foreign key (fkCarrera) references TBLCARRERA(pkCarrera);
+alter table TBLPLANESTUDIOS add foreign key (fkMateria) references TBLMATERIA(pkMateria);
+
+
+
+
+
+
+
