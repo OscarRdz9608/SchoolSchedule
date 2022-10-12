@@ -1,0 +1,113 @@
+<p>{{title}}</p>
+<h1>Registro de carrera</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+  <div class="col-4">
+    <label for="carrera" class="form-label">Nombre de carrera:
+    </label> <br>
+    <input type="text" class="form-control" id="carrera" name="carrera" required formControlName="carrera" >
+    <div *ngIf="contactForm.get('carrera')?.touched && contactForm.get('carrera')?.errors?.['required']" 
+    class="alert alert-danger"> Este campo es requerido.
+    </div>
+    <div *ngIf="contactForm.get('carrera')?.touched && contactForm.get('carrera')?.errors?.['minlength']" 
+    class="alert alert-danger"> Debe ser maximo un caracter.
+    </div> 
+  </div>
+  <div class="col-4">
+    <label for="coordinador" class="form-label">Nombre coordinador:
+    </label><br>
+    <input type="text" class="form-control" id="coordinador" name="coordinador" required formControlName="coordinador" >
+    <div *ngIf="contactForm.get('coordinador')?.touched && contactForm.get('coordinador')?.errors?.['required']" 
+    class="alert alert-danger"> Este campo es requerido.
+    </div>
+    <div *ngIf="contactForm.get('coordinador')?.touched && contactForm.get('coordinador')?.errors?.['minlength']" 
+    class="alert alert-danger">Debe ser maximo un caracter.
+    </div> 
+  </div>
+  <div class="col-4">
+    <label for="aPaterno"  class="form-label">Apellido paterno:</label> <br/>
+    <input type="text"class="form-control" formControlName="aPaterno" id="aPaterno" name="aPaterno" required >
+    <div *ngIf="contactForm.get('aPaterno')?.touched && contactForm.get('aPaterno')?.errors?.['required']" 
+    class="alert alert-danger"> Este campo es requerido.
+    </div>
+    <div *ngIf="contactForm.get('aPaterno')?.touched && contactForm.get('aPaterno')?.errors?.['minlength']" 
+    class="alert alert-danger">Debe ser maximo un caracter.
+    </div> 
+  </div>
+  <div class="col-4">
+    <label for="aMaterno" class="form-label">Apellido materno:</label> <br/>
+    <input type="text" class="form-control" id="aMaterno" name="aMaterno"  required formControlName="aMaterno">
+    <div *ngIf="contactForm.get('aMaterno')?.touched && contactForm.get('aMaterno')?.errors?.['required']" 
+    class="alert alert-danger"> Este campo es requerido.
+    </div>
+    <div *ngIf="contactForm.get('aMaterno')?.touched && contactForm.get('aMaterno')?.errors?.['minlength']" 
+    class="alert alert-danger">Debe ser maximo un caracter.
+    </div> 
+  </div>
+  <div class="col-4">
+    <label for="email" class="form-label">Correo electrónico institucional:</label> <br/>
+    <input type="text" class="form-control" id="email" name="email" required formControlName="email">
+    <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']" 
+    class="alert alert-danger"> Este campo es requerido.
+    </div>
+    <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['minlength']" 
+    class="alert alert-danger">Debe ser maximo un caracter.
+    </div> 
+  </div>
+  <div class="col-6">
+    <div class="card">
+      Plan de estudios : 
+      <button class="col-2">Añadir</button> <br>
+      <div class="card">
+        <div class="col-6">
+          <label for="cuatrimestre" class="form-label">Cuatrimestre:</label>
+          <input type="number" class="form-control" id="cuatrimestre" name="cuatrimestre" required formControlName="cuatrimestre">
+          <div *ngIf="contactForm.get('cuatrimestre')?.touched && contactForm.get('cuatrimestre')?.errors?.['required']" 
+          class="alert alert-danger"> Este campo es requerido.
+          </div>
+          <div *ngIf="contactForm.get('cuatrimestre')?.touched && contactForm.get('cuatrimestre')?.errors?.['minlength']" 
+          class="alert alert-danger">Debe ser maximo un caracter.
+          </div>  
+          <div class="card">
+            Materia:
+            <button class="col-4">Añadir</button> <br>
+            <div class="card col-6">
+              <div class="col-4">
+                <label for="materia" class="form-label">Materia:</label> <br/>
+                <input type="text" class="form-control" id="materia" name="materia" required formControlName="materia">
+                <div *ngIf="contactForm.get('materia')?.touched && contactForm.get('materia')?.errors?.['required']" 
+                class="alert alert-danger"> Este campo es requerido.
+                </div>
+                <div *ngIf="contactForm.get('materia')?.touched && contactForm.get('materia')?.errors?.['minlength']" 
+                class="alert alert-danger">Debe ser maximo un caracter.
+                </div> 
+              </div>
+              <div class=" col-4">
+                <label for="totalHoras" class="form-label">totalHoras:</label>
+                <input type="number" class="form-control" id="totalHoras" name="totalHoras" required formControlName="totalHoras">
+                <div *ngIf="contactForm.get('totalHoras')?.touched && contactForm.get('totalHoras')?.errors?.['required']" 
+                class="alert alert-danger"> Este campo es requerido.
+                </div>
+                <div *ngIf="contactForm.get('totalHoras')?.touched && contactForm.get('totalHoras')?.errors?.['minlength']" 
+                class="alert alert-danger">Debe ser maximo un caracter.
+                </div> 
+              </div>
+              <div class="col-4">
+                <label for="totalHorasSemana" class="form-label">totalHorasSemana:</label>
+                <input type="number" class="form-control" id="totalHorasSemana" name="totalHorasSemana" required formControlName="totalHorasSemana">
+                <div *ngIf="contactForm.get('totalHorasSemana')?.touched && contactForm.get('totalHorasSemana')?.errors?.['required']" 
+                class="alert alert-danger"> Este campo es requerido.
+                </div>
+                <div *ngIf="contactForm.get('totalHorasSemana')?.touched && contactForm.get('totalHorasSemana')?.errors?.['minlength']" 
+                class="alert alert-danger">Debe ser maximo un caracter.
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2  float-end">
+    <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Guardar</button>
+  </div>
+</form>
