@@ -16,3 +16,4 @@ pydantic==1.8.2
 SQLAlchemy==1.4.19
 starlette==0.14.2
 typing-extensions==3.10.0.0
+virtualenv==20.16.5
