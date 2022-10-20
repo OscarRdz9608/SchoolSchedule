@@ -1,0 +1,2 @@
+eliminar elementos que contengan llaves foraneas
+
