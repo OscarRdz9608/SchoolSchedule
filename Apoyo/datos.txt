@@ -1,0 +1,10 @@
+url= jdbc:postgresql://localhost:5432/oscarrm
+host localhost
+database oscarrm
+user oscarrm
+pass password123
+puerto 5432
+
+
+
+docker pull postgres:14.1
