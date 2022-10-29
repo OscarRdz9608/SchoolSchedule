@@ -50,22 +50,18 @@ async def delete_user(email: str, db: Session = Depends(get_db)):
     else:
         raise HTTPException(status_code=400, detail="No se elimino correctamente")
 
-"""
-@app.get("/ciclo_escolar/{id_ciclo_escolar}", tags = ["ciclo_escolar"], status_code=status.HTTP_202_ACCEPTED,
-response_model=schemas.CicloEscolarBase)
-async def read_ciclo_escolar(id_ciclo_escolar: int, db: Session = Depends(get_db)):
-    db_ciclo_escolar = crud.query_row_ciclo_escolar(db=db, id_ciclo_escolar=id_ciclo_escolar)
-    if db_ciclo_escolar is None:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
-    return db_ciclo_escolar
-"""
 @app.post("/ciclo_escolar/", tags = ["ciclo_escolar"], status_code=status.HTTP_202_ACCEPTED)
-async def create_ciclo_escolar(ciclo_base: schemas.WOICicloEscolarBase, db: Session = Depends(get_db)):
-    if crud.insert_row_ciclo_escolar(db=db, ciclo_escolar=ciclo_base) is True:
-        return {"message": "Ciclo Escolar agregado"}
-    else:
-        raise HTTPException(status_code=400, detail="No se agrego correctamente")
+async def create_ciclo_escolar(user: schemas.WOICicloEscolarBase, db: Session = Depends(get_db)):   
+    try:
+        if crud.insert_row_ciclo_escolar(db=db, cicloUser=user) is True:
+            return {"message": "Registro agregado"}
+        else:
 
+            raise HTTPException(status_code=400, detail="No se registro correctamente")
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="No se registro correctamente")
+        
 @app.put("/ciclo_escolar/", tags=["ciclo_escolar"], status_code=status.HTTP_202_ACCEPTED)
 async def update_ciclo_escolar(ciclo_escolar: schemas.CicloEscolarBase, db: Session = Depends(get_db)):
     if(crud.update_row_ciclo_escolar(db=db, ciclo_escolar=ciclo_escolar)) is True:
@@ -95,12 +91,13 @@ response_model=schemas.CarrerasBase)
 async def read_carrera(id_carrera: int, db: Session = Depends(get_db)):
     db_carrera = crud.query_row_carreras(db=db, id_carrera=id_carrera)
     if db_carrera is None:
+        print(id_carrera)
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     return db_carrera
 
 @app.post("/carrera/", tags = ["carreras"], status_code=status.HTTP_202_ACCEPTED)
 async def create_carrera(carrera: schemas.WOICarrerasBase, db: Session = Depends(get_db)):
-    if crud.insert_row_carreras(db=db, carrera=carrera) is True:
+    if crud.insert_row_carreras(db=db, user_carrera=carrera) is True:
         return {"message": "Carrera agregada"}
     else:
         raise HTTPException(status_code=400, detail="No se agrego correctamente")
@@ -130,7 +127,7 @@ async def read_plan_estudios(id_plan_estudios: int, db: Session = Depends(get_db
 
 @app.post("/planestudios/", tags = ["plan de estudios"], status_code=status.HTTP_202_ACCEPTED)
 async def create_plan_estudios(plan_estudios: schemas.WOIPlanEstudiosBase, db: Session = Depends(get_db)):
-    if crud.insert_row_plan_estudios(db=db, plan_estudios=plan_estudios) is True:
+    if crud.insert_row_plan_estudios(db=db, user_plan=plan_estudios) is True:
         return {"message": "Plan de estudios agregado"}
     else:
         raise HTTPException(status_code=400, detail="No se agrego correctamente")
@@ -144,11 +141,12 @@ async def update_plan_estudios(plan_estudios: schemas.PlanEstudiosBase, db: Sess
 
 @app.delete("/planestudios/{id_plan_estudios}", tags=["plan de estudios"], status_code=status.HTTP_202_ACCEPTED)
 async def delete_plan_estudios(id_plan_estudios: int, db: Session = Depends(get_db)):
-    if crud.delete_row_plan_estudios(db=db, id_plan_estudios=id_plan_estudios) is True:
+    if crud.delete_row_plan_estudios(db=db, id_plan_estudios =id_plan_estudios) is True:
         return {"message": "Plan de estudios eliminado"}
     else:
         raise HTTPException(status_code=400, detail="No se elimino correctamente")
 
+####################TURNOS
 
 @app.get("/turnos/{id_turno}", tags = ["turnos"], status_code=status.HTTP_202_ACCEPTED,
 response_model=schemas.TurnosBase)
