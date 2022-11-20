@@ -6,7 +6,7 @@ En carpeta code
     docker volume create webapp
     docker volume ls
     docker volume inspect webapp
-    docker container run -d -it -v "$PWD":/home/code --net=host --name school -h oscarrdz --mount source=webapp,target=/app mi_project1:v1
+    docker container run -d -it -v "$PWD":/home/code --net=host --name joseluis -h oscarrdz --mount source=webapp,target=/app joseluis:v1
 
 Correr docker
     docker start -i school
