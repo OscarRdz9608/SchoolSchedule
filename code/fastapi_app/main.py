@@ -11,7 +11,46 @@ from  database import SessionLocal, engine
  
 models.Base.metadata.create_all(bind=engine)
  
-app = FastAPI()
+########################################################## PERSONALIZAR INTERFAZ FASTAPI #################################################################
+ description = """
+SchoolSchedule API capaz de admnistrar la gestión de horarios escolares. 🚀
+
+## Items
+
+    Gestionar Usuarios
+    Gestionar Carreras
+    Ciclos Escolares
+    Plan de estudio
+    Grupos
+    Registro de disponibilidad de profesores
+    Gestión de horarios escolares (No implementado)
+
+
+## Users
+
+You will be able to:
+
+* **Create users** (_not implemented_).
+* **Read users** (_not implemented_).
+"""
+
+app = FastAPI(
+    title="SchoolSchedule",
+    description=description,
+    version="0.0.1",
+    terms_of_service="http://example.com/terms/",
+    contact={
+        "name": "SchoolSchedule",
+        "url": "https://github.com/DarkStark9608/SchoolSchedule/",
+        "email": "SchoolSchedule",
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
+)
+
+ #######################################################################################################################################
 
 origins = [
     "*"
