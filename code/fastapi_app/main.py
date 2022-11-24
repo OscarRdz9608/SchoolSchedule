@@ -12,6 +12,7 @@ from  database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
  
 ########################################################## PERSONALIZAR INTERFAZ FASTAPI #################################################################
+ from starlette.responses import RedirectResponse 
  description = """
 SchoolSchedule API capaz de admnistrar la gestión de horarios escolares. 🚀
 
